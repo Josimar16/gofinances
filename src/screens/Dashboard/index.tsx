@@ -1,17 +1,14 @@
 import React from 'react';
 
 import {
-  Container
+  Container,
+  Title
 } from './styles';
-
-import {
-  Text
-} from 'react-native';
 
 export function Dashboard() {
   return (
     <Container>
-      <Text>Ola mundo!</Text>
+      <Title>Ola mundo!</Title>
     </Container>
   );
 }
