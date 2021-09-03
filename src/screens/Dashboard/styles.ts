@@ -16,7 +16,7 @@ export const Header = styled.View`
   
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const UserWrapper = styled.View`
@@ -27,6 +27,7 @@ export const UserWrapper = styled.View`
 
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const UserInfo = styled.View`
