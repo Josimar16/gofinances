@@ -1,24 +1,51 @@
-import React from 'react';
-import { Feather } from '@expo/vector-icons';
-import { RFValue } from 'react-native-responsive-fontsize';
-
-import theme from '../../global/styles/theme';
-
+import React, { useState } from 'react';
+import { HighlightCard } from '../../components/HighlightCard';
+import { TransactionCardProps, TransactionCard } from '../../components/TransactionCard';
 import {
   Container,
-  Header,
-  UserWrapper,
-  UserInfo,
-  Photo,
-  User,
-  UserGreeting,
-  UserName,
-  Icon,
-  HighlightCards
+  Header, HighlightCards, Icon, Photo, Title,
+  TransactionList, Transactions, User,
+  UserGreeting, UserInfo, UserName, UserWrapper
 } from './styles';
-import { HighlightCard } from '../../components/HighlightCard';
+
+export interface DataListProps extends TransactionCardProps {
+  id: string;
+}
 
 export function Dashboard() {
+  const [data, setData] = useState<DataListProps[]>([{
+    id: "1",
+    title: "Desenvolvimento de site",
+    type: "positive",
+    amount: "R$ 12.000,00",
+    category: {
+      name: "Vendas",
+      icon: "dollar-sign"
+    },
+    date: "13/04/2020",
+  }, {
+    id: "2",
+    title: "Hamburgueria Pizzy",
+    type: "negative",
+    amount: "R$ 59,00",
+    category: {
+      name: "Alimentação",
+      icon: "coffee"
+    },
+    date: "13/04/2020",
+  },
+  {
+    id: "3",
+    title: "Aluguel do apartamento",
+    type: "negative",
+    amount: "R$ 1.500,00",
+    category: {
+      name: "Casa",
+      icon: "shopping-bag"
+    },
+    date: "13/04/2020",
+  },]);
+
   return (
     <Container>
       <Header>
@@ -55,6 +82,16 @@ export function Dashboard() {
           last_transaction="01 à 16 de abril"
         />
       </HighlightCards>
+
+      <Transactions>
+        <Title>Listagem</Title>
+
+        <TransactionList
+          data={data}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => <TransactionCard key={item.id} data={item} />}
+        />
+      </Transactions>
     </Container >
   );
 }
