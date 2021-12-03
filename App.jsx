@@ -1,6 +1,8 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
+
 import {
   useFonts,
   Poppins_400Regular,
@@ -9,7 +11,7 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import theme from './src/global/styles/theme';
-import { Register } from './src/screens/Register';
+import { AppRoutes } from './src/routes/app.routes';
 
 export function App() {
   const [fontsLoaded] = useFonts({
@@ -22,7 +24,9 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Register />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
